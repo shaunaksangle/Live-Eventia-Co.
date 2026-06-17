@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --ink: #252b4a;
   --navy: #2b3270;
   --navy-2: #17183f;
@@ -136,8 +136,29 @@ button, input, select, textarea { font: inherit; }
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0;
-  color: #111111;
+  color: var(--navy);
 }
+.live-brand .lyv-word {
+  font: inherit;
+}
+
+.live-brand .lyv-word-primary {
+  color: var(--navy);
+}
+
+.live-brand .lyv-word-eventia {
+  color: var(--coral);
+}
+
+.live-brand .lyv-word-co {
+  color: var(--teal);
+}
+
+
+
+
+
+
 
 .site-nav {
   display: flex;
@@ -1734,6 +1755,12 @@ p {
   }
 }
 
+
+
+
+
+
+
 @media (max-width: 640px) {
   .container { width: min(100% - 28px, var(--max)); }
   .brand span { max-width: 210px; }
@@ -1800,6 +1827,12 @@ p {
   .logo-list figure { min-height: 118px; }
 }
 
+
+
+
+
+
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
@@ -1817,6 +1850,19 @@ p {
     transform: none;
   }
 }
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
 
-
+.contact-form button[disabled] {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
 

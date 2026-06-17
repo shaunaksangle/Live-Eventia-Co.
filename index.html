@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,7 +14,7 @@
   <header class="site-header" data-header>
     <a class="brand brand-full live-brand" href="#top" aria-label="Lyv Eventia & Co. home">
       <img src="assets/live-eventia-mark.png" alt="Lyv Eventia & Co. logo mark">
-      <span>Lyv Eventia &amp; Co.</span>
+      <span><b class="lyv-word lyv-word-primary">Lyv</b> <b class="lyv-word lyv-word-eventia">Eventia</b> <b class="lyv-word lyv-word-co">&amp; Co.</b></span>
     </a>
     <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
       <span></span>
@@ -541,9 +541,9 @@
             <span>Data-driven strategy</span>
             <span>Domain-led execution</span>
           </div>
-          <a class="contact-email" href="mailto:info@lyv.co.in">info@lyv.co.in</a>
+          <span class="contact-email">info@lyv.co.in</span>
         </div>
-        <form class="contact-form reveal" data-contact-form data-contact-email="info@lyv.co.in">
+        <form class="contact-form reveal" data-contact-form data-contact-endpoint="/api/contact">
           <label>
             <span>Name</span>
             <input type="text" name="name" placeholder="Your name" minlength="2" required>
@@ -553,16 +553,16 @@
             <input type="email" name="email" placeholder="name@company.com" required>
           </label>
           <label>
-            <span>Company</span>
-            <input type="text" name="company" placeholder="Company or institution" minlength="2" required>
+            <span>Company (optional)</span>
+            <input type="text" name="company" placeholder="Company or institution">
           </label>
           <label>
             <span>Phone</span>
             <input type="tel" name="phone" placeholder="+91 98765 43210" inputmode="tel" pattern="[0-9+()\\-\\s]{7,20}">
           </label>
           <label>
-            <span>Requirement</span>
-            <select name="requirement" required>
+            <span>Service</span>
+            <select name="service" required>
               <option value="">Select a focus area</option>
               <option>Collections platform</option>
               <option>Calling as a Service</option>
@@ -573,10 +573,14 @@
           </label>
           <label>
             <span>Message</span>
-            <textarea name="message" rows="4" minlength="10" placeholder="Tell us what you want to improve" required></textarea>
+            <textarea name="message" rows="4" placeholder="Share a short message or question" required></textarea>
+          </label>
+          <label class="honeypot-field" aria-hidden="true">
+            <span>Leave this field empty</span>
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
           <button class="btn primary full" type="submit">Send enquiry</button>
-          <p class="form-note" data-form-note>Sending opens your email app with this enquiry addressed to info@lyv.co.in.</p>
+          <p class="form-note" data-form-note>Submit the form and the team will receive your enquiry by email.</p>
         </form>
       </div>
     </section>
@@ -596,6 +600,10 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
 
 
 

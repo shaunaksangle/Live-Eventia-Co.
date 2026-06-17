@@ -1,0 +1,12 @@
+{
+    "name":  "lyv-eventia-static-site",
+    "version":  "1.0.0",
+    "private":  true,
+    "description":  "Plain static HTML/CSS/JS website with a Vercel serverless contact form.",
+    "scripts":  {
+                    "dev":  "echo Use Vercel CLI directly"
+                },
+    "dependencies":  {
+                         "resend":  "^6.12.4"
+                     }
+}
