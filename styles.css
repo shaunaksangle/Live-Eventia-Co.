@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --ink: #252b4a;
   --navy: #2b3270;
   --navy-2: #17183f;
@@ -136,11 +136,7 @@ button, input, select, textarea { font: inherit; }
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0;
-  color: var(--navy);
-  background: linear-gradient(90deg, var(--navy) 0 35%, var(--coral) 35% 70%, var(--teal) 70% 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #111111;
 }
 
 .site-nav {
@@ -151,17 +147,31 @@ button, input, select, textarea { font: inherit; }
 
 .site-nav a {
   padding: 9px 10px;
+  border: 1px solid transparent;
   border-radius: var(--radius);
   color: #33385f;
   font-size: 0.94rem;
   font-weight: 700;
-  transition: background 160ms ease, color 160ms ease;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
   background: var(--soft-blue);
   outline: none;
+}
+
+.site-nav .nav-pdf {
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(234, 223, 216, 0.96);
+}
+
+.site-nav .nav-pdf:hover,
+.site-nav .nav-pdf:focus-visible {
+  color: var(--navy);
+  background: var(--white);
+  border-color: rgba(237, 73, 51, 0.34);
 }
 
 .site-nav .nav-cta {
@@ -1471,6 +1481,30 @@ p {
   font-weight: 700;
 }
 
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 22px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.contact-email:hover,
+.contact-email:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.18);
+}
+
 .contact-form {
   display: grid;
   gap: 16px;
@@ -1583,13 +1617,15 @@ p {
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 650ms ease, transform 650ms ease;
+  transform: translateY(32px) scale(0.985);
+  filter: blur(5px);
+  transition: opacity 950ms var(--ease), transform 950ms var(--ease), filter 950ms ease;
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 @media (max-width: 1040px) {
@@ -1781,3 +1817,6 @@ p {
     transform: none;
   }
 }
+
+
+

@@ -1,4 +1,4 @@
-const header = document.querySelector("[data-header]");
+﻿const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const form = document.querySelector("[data-contact-form]");
@@ -49,7 +49,7 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.16 }
+  { threshold: 0.08, rootMargin: "0px 0px -8% 0px" }
 );
 
 document.querySelectorAll(".reveal").forEach((element) => {
@@ -157,6 +157,25 @@ form.addEventListener("input", (event) => {
   formNote.classList.remove("error");
 });
 
+const buildMailtoHref = (data, recipient) => {
+  const value = (key) => String(data.get(key) || "").trim();
+  const subject = `${value("company")} enquiry: ${value("requirement")}`;
+  const body = [
+    "New website enquiry",
+    "",
+    `Name: ${value("name")}`,
+    `Email: ${value("email")}`,
+    `Company: ${value("company")}`,
+    `Phone: ${value("phone") || "-"}`,
+    `Requirement: ${value("requirement")}`,
+    "",
+    "Message:",
+    value("message")
+  ].join("\n");
+
+  return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!validateContactForm()) {
@@ -165,7 +184,18 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  formNote.textContent = "Thanks. Your enquiry is captured in this preview and ready to connect to email or CRM workflow.";
+  const data = new FormData(form);
+  const contactEmail = form.dataset.contactEmail;
+
+  if (!contactEmail) {
+    formNote.textContent = "Contact email is not configured for this site.";
+    formNote.classList.add("error");
+    return;
+  }
+
+  window.location.href = buildMailtoHref(data, contactEmail);
+  formNote.textContent = `Your email app is opening with this enquiry addressed to ${contactEmail}.`;
   formNote.classList.add("success");
-  form.reset();
+  window.setTimeout(() => form.reset(), 200);
 });
+
